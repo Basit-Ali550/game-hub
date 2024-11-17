@@ -2,6 +2,7 @@
 // import apiClient from "../services/api-client";
 
 import useData from "./uesData";
+import { Genre } from "./useGenre";
 
 // import { CanceledError } from "axios";
 export interface Platforms{
@@ -43,5 +44,5 @@ export interface Game {
 //     }, []);
 //   return{games,error,isLoading}
 // }
-const useGames =()=>useData<Game>('/games')
+const useGames =( selectGenre: Genre | null)=>useData<Game>('/games',{params:{genres:selectGenre?.id}},[selectGenre?.id])
 export default useGames
