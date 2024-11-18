@@ -1,9 +1,8 @@
 // import { useEffect, useState } from "react";
 // import apiClient from "../services/api-client";
 
+import { GameQuery } from "../App";
 import useData from "./uesData";
-import { Genre } from "./useGenre";
-
 // import { CanceledError } from "axios";
 export interface Platforms{
   id:number;
@@ -44,5 +43,5 @@ export interface Game {
 //     }, []);
 //   return{games,error,isLoading}
 // }
-const useGames =( selectGenre: Genre | null,  selectPlatform:Platforms|null)=>useData<Game>('/games',{params:{genres:selectGenre?.id,platforms:selectPlatform?.id}},[selectGenre?.id,selectPlatform?.id])
+const useGames =( gameQuery :GameQuery)=>useData<Game>('/games',{params:{genres:gameQuery.genre?.id,platforms:gameQuery.platform?.id}},[gameQuery])
 export default useGames
