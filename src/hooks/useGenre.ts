@@ -1,11 +1,12 @@
 
-import useData from "./uesData";
+import genres from "../data/genres";
+// import useData from "./uesData";
 export interface Genre{
     id:number;
     name:string
     image_background:string
 }
 
-const useGenre=()=>useData<Genre>('/genres')
+const useGenre=()=>({data:genres, isLoading:false,error:null})
 
 export default useGenre
